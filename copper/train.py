@@ -48,6 +48,7 @@ def train(cfg: DictConfig) -> Tuple[dict, dict]:
     if cfg.get("train"):
         log.info("Starting training!")
         ckpt_path=cfg.get("ckpt_path")
+        os.makedirs(ckpt_path, exist_ok=True)
         trainer.fit(model=model, datamodule=datamodule,
                     ckpt_path=ckpt_path)
 
@@ -57,6 +58,7 @@ def train(cfg: DictConfig) -> Tuple[dict, dict]:
         log.info("Starting testing!")
         # Getting ckpt_path from train.yaml
         ckpt_path = cfg.get("ckpt_path", "")
+        os.makedirs(ckpt_path, exist_ok=True)
         if ckpt_path == "":
             log.warning(
                 "Best ckpt not found! Using current weights for testing..."
