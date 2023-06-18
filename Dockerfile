@@ -1,6 +1,6 @@
 FROM python:3.9.10-slim-buster
 
-WORKDIR /opt
+WORKDIR /workspace/emlo4-lightning
 
 COPY requirements.txt requirements.txt
 
