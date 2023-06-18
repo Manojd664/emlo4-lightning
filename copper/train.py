@@ -47,8 +47,10 @@ def train(cfg: DictConfig) -> Tuple[dict, dict]:
 
     if cfg.get("train"):
         log.info("Starting training!")
+        ckpt_path=cfg.get("ckpt_path")
+        os.makedirs(ckpt_path, exist_ok=True)
         trainer.fit(model=model, datamodule=datamodule,
-                    ckpt_path=cfg.get("ckpt_path"))
+                    ckpt_path=ckpt_path)
 
     train_metrics = trainer.callback_metrics
 

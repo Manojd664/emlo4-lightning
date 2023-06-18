@@ -24,15 +24,17 @@ pip install -e .
 
     $ cd emlo4-lightning
 
+    $ pip  install -r requirements.txt
+
 # Building Steps
 
     $ python setup.py sdist bdist_wheel
     
-    # wheel file location /dist
+    # wheel file location ./dist/copper-0.0.1-py3-none-any.whl
 
 # For training
 
-    $python3 copper/train.py experiment=cifar10_example
+    $ python3 copper/train.py experiment=cifar10_example
 
 # Docker Image Building
     $docker build -t manojd664/emlo4-lightning .
