@@ -18,7 +18,7 @@ test: True
 compile: False
 
 # simply provide checkpoint path to resume training
-ckpt_path: /workspace/emlo4-lightning/ckpth/model_checkpoint.pth
+ckpt_path: null
 
 # seed for random number generators in pytorch, numpy and python.random
 seed: 23

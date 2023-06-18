@@ -48,7 +48,6 @@ def train(cfg: DictConfig) -> Tuple[dict, dict]:
     if cfg.get("train"):
         log.info("Starting training!")
         ckpt_path=cfg.get("ckpt_path")
-        open(ckpt_path,"a")
         trainer.fit(model=model, datamodule=datamodule,
                     ckpt_path=ckpt_path)
 
