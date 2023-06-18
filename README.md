@@ -34,16 +34,17 @@ pip install -e .
 
 # For training
 
-    $ python3 copper/train.py experiment=cifar10_example
+    $ python3 copper/train.py +experiment=cifar10_example
 
 # Docker Image Building
-    $docker build -t manojd664/emlo4-lightning .
+    $ docker build -t manojd664/emlo4-lightning .
+
 # Pull Image from Docker Hub
     $docker pull manojd664/emlo4-lightning:latest
 
 # For training through docker
-    $docker run -it --volume /workspace/emlo4-lightning:/opt manojd664/emlo4-lightning:latest python train.py experiment=cifar10_example
+    $docker run -it --volume /workspace/emlo4-lightning:/opt manojd664/emlo4-lightning:latest python train.py +experiment=cifar10_example
 
 
 # For evaluating through docker
-    $docker run -it --volume /workspace/emlo4-lightning:/opt manojd664/emlo4-lightning:latest python eval.py experiment=cifar10_example
+    $docker run -it --volume /workspace/emlo4-lightning:/opt manojd664/emlo4-lightning:latest python eval.py +experiment=cifar10_example
