@@ -18,7 +18,7 @@ test: True
 compile: False
 
 # simply provide checkpoint path to resume training
-ckpt_path: /opt/model_checkpoint.pth
+ckpt_path: /opt/ckpth/model_checkpoint.pth
 
 # seed for random number generators in pytorch, numpy and python.random
 seed: 23
