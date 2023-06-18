@@ -40,8 +40,8 @@ pip install -e .
     $docker pull manojd664/emlo4-lightning:latest
 
 # For training through docker
-docker run -it --volume /workspace/emlo4-lightning:/opt manojd664/emlo4-lightning:latest python train.py experiment=cifar10_example
+    $docker run -it --volume /workspace/emlo4-lightning:/opt manojd664/emlo4-lightning:latest python train.py experiment=cifar10_example
 
 
 # For evaluating through docker
-docker run -it --volume /workspace/emlo4-lightning:/opt manojd664/emlo4-lightning:latest python eval.py experiment=cifar10_example
+    $docker run -it --volume /workspace/emlo4-lightning:/opt manojd664/emlo4-lightning:latest python eval.py experiment=cifar10_example
