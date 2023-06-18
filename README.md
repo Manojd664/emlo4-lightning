@@ -20,21 +20,28 @@ pip install -e .
 ### Docker
 
 # Project Setup
-$ git clone 
+    $ git clone https://github.com/Manojd664/emlo4-lightning.git
+
+    $ cd emlo4-lightning
 
 # Building Steps
 
+    $ python setup.py sdist bdist_wheel
+    
+    # wheel file location /dist
 
 # For training
 
-python src/train.py experiment=cifar10_example
+    $python3 copper/train.py experiment=cifar10_example
 
-docker build -t manoj/emlo4 -f dockers/train/Dockerfile .
-# or pull from Docker hub
-docker pull manoj/lightning:latest
+# Docker Image Building
+    $docker build -t manojd664/emlo4-lightning .
+# Pull Image from Docker Hub
+    $docker pull manojd664/emlo4-lightning:latest
 
-# For training through docker 
-docker run -it --volume /workspace/emlo4-lightning:/opt/src/  manoj/lightning python src/train.py experiment=cifar10_example
+# For training through docker
+docker run -it --volume /workspace/emlo4-lightning:/opt manojd664/emlo4-lightning:latest python train.py experiment=cifar10_example
+
 
 # For evaluating through docker
-docker run -it --volume /workspace/emlo4-lightning:/opt/src/  manoj/lightning python src/eval.py experiment=cifar10_example
+docker run -it --volume /workspace/emlo4-lightning:/opt manojd664/emlo4-lightning:latest python eval.py experiment=cifar10_example

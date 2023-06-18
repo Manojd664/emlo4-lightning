@@ -6,9 +6,9 @@ setup(
     name="copper",
     version="0.0.1",
     description="PyTorch Lightning Project Setup",
-    author="",
-    author_email="",
-    url="https://github.com/user/project",
+    author="manojd664",
+    author_email="manojd664@gmail.com",
+    url="https://github.com/Manojd664/emlo4-lightning",
     install_requires=["lightning", "hydra-core"],
     packages=find_packages(),
     # use this to customize global commands available in the terminal after installing the package
