@@ -48,3 +48,6 @@ pip install -e .
 
 # For evaluating through docker
     $ docker run -it --volume /workspace/emlo4-lightning:/opt manojd664/emlo4-lightning:latest python eval.py +experiment=cifar10_example
+
+# For Infering 
+    $copper_infer experiment=cat_dog data.num_workers=16

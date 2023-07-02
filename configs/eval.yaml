@@ -12,4 +12,4 @@ defaults:
 task_name: "eval"
 
 tags: ["dev"]
-ckpt_path:  ${paths.root_dir}/outputs/2023-06-18/14-05-30/lightning_logs/version_0/checkpoints/epoch=1-step=704.ckpt
+ckpt_path:  /Users/mdhakad/Desktop/emlo4-lightning/outputs/checkpoints/model.ckpt

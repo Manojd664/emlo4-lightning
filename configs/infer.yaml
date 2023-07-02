@@ -1,0 +1,17 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - data: cifar.yaml # choose datamodule with `test_dataloader()` for evaluation
+  - model: cifar.yaml
+  - trainer: default.yaml
+  - paths: default.yaml
+
+
+  - experiment: null
+
+task_name: "infer"
+
+tags: ["dev"]
+ckpt_path: /Users/mdhakad/Desktop/emlo4-lightning/outputs/checkpoints/model.ckpt
+image_path: /Users/mdhakad/Desktop/emlo4-lightning/data/PetImages_split/infer/Cat/12.jpg
