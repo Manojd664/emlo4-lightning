@@ -68,10 +68,10 @@ def infer(cfg: DictConfig) -> Tuple[dict, dict]:
     log.info("Starting testing!")
     #trainer.test(model=model, datamodule=datamodule, ckpt_path=cfg.ckpt_path)
 
-    model.load_from_checkpoint('/Users/anmolsrivastava/emlo/emlo4-lightning/outputs/2023-07-01/12-58-13/lightning_logs/version_0/checkpoints/epoch=0-step=313.ckpt')
+    model.load_from_checkpoint(cfg.get("ckpt_path"))
     model.eval()
-    image_path = "/Users/anmolsrivastava/emlo/emlo4-lightning/data/PetImages_split/infer/Cat/12.jpg"  # Replace with the path to your image
-    image = preprocess_image(image_path)
+    infer_image_path = cfg.get("infer_image_path")  # Replace with the path to your image
+    image = preprocess_image(infer_image_path)
     # for predictions use trainer.predict(...)
     #predictions = trainer.predict(model=model, datamodule=datamodule, ckpt_path='/Users/anmolsrivastava/emlo/emlo4-lightning/outputs/2023-07-01/12-58-13/lightning_logs/version_0/checkpoints/epoch=0-step=313.ckpt')
     with torch.no_grad():

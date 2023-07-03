@@ -13,4 +13,6 @@ defaults:
 task_name: "infer"
 
 tags: ["dev"]
-ckpt_path:  ${paths.root_dir}/outputs/2023-06-18/14-05-30/lightning_logs/version_0/checkpoints/epoch=1-step=704.ckpt
+ckpt_path:  ${paths.root_dir}/outputs/2023-07-03/22-28-39/lightning_logs/version_0/checkpoints/epoch=0-step=313.ckpt
+
+infer_image_path: ${paths.root_dir}/data/PetImages_split/infer/Cat/12.jpg
