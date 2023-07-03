@@ -8,14 +8,14 @@ from torch.utils.data import Dataset, DataLoader
 
 class ImageFolderDataModule(LightningDataModule):
     def __init__(
-        self,
-        train_dataset: ImageFolder,
-        test_dataset: ImageFolder,
-        infer_dataset: ImageFolder,
-        image_size: int = 32,
-        batch_size: int = 64,
-        num_workers: int = 0,
-        pin_memory: bool = False,
+            self,
+            train_dataset: ImageFolder,
+            test_dataset: ImageFolder,
+            infer_dataset: ImageFolder,
+            image_size: int = 32,
+            batch_size: int = 64,
+            num_workers: int = 0,
+            pin_memory: bool = False,
     ):
         super().__init__()
 
@@ -50,8 +50,8 @@ class ImageFolderDataModule(LightningDataModule):
             pin_memory=self.hparams.pin_memory,
             shuffle=True,
         )
-    
-    
+
+
 
     def val_dataloader(self):
         return DataLoader(
@@ -70,5 +70,3 @@ class ImageFolderDataModule(LightningDataModule):
             pin_memory=self.hparams.pin_memory,
             shuffle=False,
         )
-    
-    

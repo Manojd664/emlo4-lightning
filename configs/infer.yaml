@@ -13,5 +13,4 @@ defaults:
 task_name: "infer"
 
 tags: ["dev"]
-ckpt_path: /Users/mdhakad/Desktop/emlo4-lightning/outputs/checkpoints/model.ckpt
-image_path: /Users/mdhakad/Desktop/emlo4-lightning/data/PetImages_split/infer/Cat/12.jpg
+ckpt_path:  ${paths.root_dir}/outputs/2023-06-18/14-05-30/lightning_logs/version_0/checkpoints/epoch=1-step=704.ckpt

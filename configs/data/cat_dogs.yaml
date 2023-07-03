@@ -6,7 +6,7 @@ test_dataset:
   _target_: torchvision.datasets.ImageFolder
   root: ${paths.data_dir}/PetImages_split/test
 
-infer_dataset: 
+infer_dataset:
   _target_: torchvision.datasets.ImageFolder
   root: ${paths.data_dir}/PetImages_split/infer
 

@@ -16,18 +16,18 @@ log = pylogger.get_pylogger(__name__)
 
 @rank_zero_only
 def print_config_tree(
-    cfg: DictConfig,
-    print_order: Sequence[str] = (
-        "data",
-        "model",
-        "callbacks",
-        "logger",
-        "trainer",
-        "paths",
-        "extras",
-    ),
-    resolve: bool = False,
-    save_to_file: bool = False,
+        cfg: DictConfig,
+        print_order: Sequence[str] = (
+                "data",
+                "model",
+                "callbacks",
+                "logger",
+                "trainer",
+                "paths",
+                "extras",
+        ),
+        resolve: bool = False,
+        save_to_file: bool = False,
 ) -> None:
     """Prints content of DictConfig using Rich library and its tree structure.
 

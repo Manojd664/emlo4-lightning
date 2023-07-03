@@ -13,16 +13,16 @@ from torchmetrics.classification.accuracy import Accuracy
 
 class PatchEmbedding(nn.Module):
     def __init__(
-        self,
-        in_channels=3,
-        patch_size=16,
-        emb_size=768,
-        img_size=224,
+            self,
+            in_channels=3,
+            patch_size=16,
+            emb_size=768,
+            img_size=224,
     ):
         super(PatchEmbedding, self).__init__()
 
         assert (
-            img_size / patch_size % 1 == 0
+                img_size / patch_size % 1 == 0
         ), "img_size must be integer multiple of patch_size"
 
         self.projection = nn.Sequential(
@@ -39,7 +39,7 @@ class PatchEmbedding(nn.Module):
                 (img_size // patch_size) * (img_size // patch_size)
                 + 1,  # 14 x 14 patches + CLS patch
                 emb_size,
-            )
+                )
         )
 
     def forward(self, x):
@@ -127,7 +127,7 @@ FeedForwardBlock = lambda emb_size=768, expansion=4, drop_p=0.0: nn.Sequential(
 
 class TransformerEncoderBlock(nn.Sequential):
     def __init__(
-        self, emb_size=768, drop_p=0.0, forward_expansion=4, forward_drop_p=0, **kwargs
+            self, emb_size=768, drop_p=0.0, forward_expansion=4, forward_drop_p=0, **kwargs
     ):
         super(TransformerEncoderBlock, self).__init__(
             ResidualAdd(
@@ -166,14 +166,14 @@ class ClassificationHead(nn.Sequential):
 
 class ViT(nn.Sequential):
     def __init__(
-        self,
-        in_channels=3,
-        patch_size=16,
-        emb_size=768,
-        img_size=224,
-        depth=12,
-        num_classes=1000,
-        **kwargs
+            self,
+            in_channels=3,
+            patch_size=16,
+            emb_size=768,
+            img_size=224,
+            depth=12,
+            num_classes=1000,
+            **kwargs
     ):
         super(ViT, self).__init__(
             PatchEmbedding(
@@ -188,14 +188,14 @@ class ViT(nn.Sequential):
 
 class VitLitModule(LightningModule):
     def __init__(
-        self,
-        optimizer: torch.optim.Optimizer,
-        scheduler: torch.optim.lr_scheduler,
-        num_classes: int,
-        in_channels: int = 3,
-        patch_size: int = 16,
-        emb_size: int = 768,
-        img_size: int = 224
+            self,
+            optimizer: torch.optim.Optimizer,
+            scheduler: torch.optim.lr_scheduler,
+            num_classes: int,
+            in_channels: int = 3,
+            patch_size: int = 16,
+            emb_size: int = 768,
+            img_size: int = 224
     ):
         super().__init__()
 
