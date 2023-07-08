@@ -14,8 +14,8 @@
 
 defaults:
   - _self_
-  - data: mnist.yaml
-  - model: mnist.yaml
+  - data: cifar.yaml
+  - model: vit.yaml
   - paths: default.yaml
   - trainer: default.yaml
   - logger: null

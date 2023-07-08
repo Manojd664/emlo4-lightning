@@ -37,7 +37,7 @@ def train(cfg: DictConfig) -> Tuple[dict, dict]:
     model: LightningModule = hydra.utils.instantiate(cfg.model)
 
     log.info(f"Instantiating trainer <{cfg.trainer._target_}>")
-    trainer: L.Trainer = hydra.utils.instantiate(cfg.trainer)
+    trainer: Trainer = hydra.utils.instantiate(cfg.trainer)
 
     object_dict = {
         "cfg": cfg,
@@ -45,7 +45,6 @@ def train(cfg: DictConfig) -> Tuple[dict, dict]:
         "model": model,
         "trainer": trainer,
     }
-
 
     if cfg.get("train"):
         log.info("Starting training!")
