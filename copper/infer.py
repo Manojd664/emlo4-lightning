@@ -26,8 +26,8 @@ from copper import utils
 
 log = utils.get_pylogger(__name__)
 
-def preprocess_image(image_path):
 
+def preprocess_image(image_path):
     transforms = T.Compose(
         [
             T.Resize((32, 32)),
@@ -35,7 +35,6 @@ def preprocess_image(image_path):
             T.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
         ]
     )
-
 
     image = Image.open(image_path).convert("RGB")  # Open the image and convert it to RGB if needed
     image = transforms(image)  # Apply the transformation
@@ -45,13 +44,11 @@ def preprocess_image(image_path):
 
 @utils.task_wrapper
 def infer(cfg: DictConfig) -> Tuple[dict, dict]:
-
     log.info(f"Instantiating datamodule <{cfg.data._target_}>")
     datamodule: LightningDataModule = hydra.utils.instantiate(cfg.data)
 
     log.info(f"Instantiating model <{cfg.model._target_}>")
     model: LightningModule = hydra.utils.instantiate(cfg.model)
-
 
     log.info(f"Instantiating trainer <{cfg.trainer._target_}>")
     trainer: Trainer = hydra.utils.instantiate(cfg.trainer)
@@ -64,16 +61,15 @@ def infer(cfg: DictConfig) -> Tuple[dict, dict]:
         "trainer": trainer,
     }
 
-
     log.info("Starting testing!")
-    #trainer.test(model=model, datamodule=datamodule, ckpt_path=cfg.ckpt_path)
+    # trainer.test(model=model, datamodule=datamodule, ckpt_path=cfg.ckpt_path)
 
     model.load_from_checkpoint(cfg.get("ckpt_path"))
     model.eval()
     infer_image_path = cfg.get("infer_image_path")  # Replace with the path to your image
     image = preprocess_image(infer_image_path)
     # for predictions use trainer.predict(...)
-    #predictions = trainer.predict(model=model, datamodule=datamodule, ckpt_path='/Users/anmolsrivastava/emlo/emlo4-lightning/outputs/2023-07-01/12-58-13/lightning_logs/version_0/checkpoints/epoch=0-step=313.ckpt')
+    # predictions = trainer.predict(model=model, datamodule=datamodule, ckpt_path='/Users/anmolsrivastava/emlo/emlo4-lightning/outputs/2023-07-01/12-58-13/lightning_logs/version_0/checkpoints/epoch=0-step=313.ckpt')
     with torch.no_grad():
         output = model(image)
         predicted_class = torch.argmax(output, dim=1).item()
@@ -84,9 +80,11 @@ def infer(cfg: DictConfig) -> Tuple[dict, dict]:
 
     return metric_dict, object_dict
 
+
 @hydra.main(version_base="1.3", config_path="../configs", config_name="infer.yaml")
 def main(cfg: DictConfig) -> None:
     infer(cfg)
+
 
 if __name__ == "__main__":
     main()

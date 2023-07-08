@@ -17,9 +17,12 @@ from lightning import LightningModule
 import hydra
 from omegaconf import DictConfig
 from copper import utils
+from aim import Run
 
 log = utils.get_pylogger(__name__)
 
+# example of how to use aim with hydra: https://github.com/aimhubio/aim/blob/main/docs/source/using/remote_tracking.md
+aim_run = Run()
 
 @utils.task_wrapper
 def train(cfg: DictConfig) -> Tuple[dict, dict]:
@@ -34,7 +37,7 @@ def train(cfg: DictConfig) -> Tuple[dict, dict]:
     model: LightningModule = hydra.utils.instantiate(cfg.model)
 
     log.info(f"Instantiating trainer <{cfg.trainer._target_}>")
-    trainer: Trainer = hydra.utils.instantiate(cfg.trainer)
+    trainer: L.Trainer = hydra.utils.instantiate(cfg.trainer)
 
     object_dict = {
         "cfg": cfg,
@@ -42,6 +45,7 @@ def train(cfg: DictConfig) -> Tuple[dict, dict]:
         "model": model,
         "trainer": trainer,
     }
+
 
     if cfg.get("train"):
         log.info("Starting training!")

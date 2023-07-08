@@ -2,16 +2,25 @@
 
 # specify here default configuration
 # order of defaults determines the order in which configs override each other
+#defaults:
+#  - _self_
+#  - data: cifar.yaml
+#  - model: cifar.yaml
+#  - paths: default.yaml
+#  - trainer: default.yaml
+#  # experiment configs allow for version control of specific hyperparameters
+#  # e.g. best hyperparameters for given model and datamodule
+#  - experiment: null
+
 defaults:
   - _self_
-  - data: cifar.yaml
-  - model: cifar.yaml
+  - data: mnist.yaml
+  - model: mnist.yaml
   - paths: default.yaml
   - trainer: default.yaml
+  - logger: null
+  - callbacks: default.yaml
 
-  # experiment configs allow for version control of specific hyperparameters
-  # e.g. best hyperparameters for given model and datamodule
-  - experiment: null
 
 # task name, determines output directory path
 task_name: "train"
@@ -30,4 +39,4 @@ compile: False
 ckpt_path: null
 
 # seed for random number generators in pytorch, numpy and python.random
-seed: nullcopper
+seed: 37
