@@ -1,6 +1,6 @@
 FROM python:3.9.14-slim-bullseye
 
-WORKDIR /opt/src
+WORKDIR /opt
 
 COPY requirements.txt requirements.txt
 
